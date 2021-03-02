@@ -162,7 +162,7 @@ class TuyaLan {
     }
 
     configureAccessory(accessory) {
-        if (accessory instanceof PlatformAccessory && this._expectedUUIDs.includes(accessory.UUID)) {
+        if (accessory instanceof PlatformAccessory && this._expectedUUIDs && this._expectedUUIDs.includes(accessory.UUID)) {
             this.cachedAccessories.set(accessory.UUID, accessory);
             accessory.services.forEach(service => {
                 if (service.UUID === Service.AccessoryInformation.UUID) return;
